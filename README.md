@@ -8,6 +8,8 @@ to web application development.
 
 - Meteor Js
 - Iron Router
+- SimpleSchema
+- AutoForm
 
 ## Routes
 
@@ -20,3 +22,11 @@ is compiled for both client and server rendering.
 
 The database information for the application is setup entirely from the `/collections` folder.
 This will be the area where we pre-fetch information, setup schemas, and work with the MongoDb.
+
+Dependencies have been added for the database.  Using SimpleSchema we can validate information
+that goes into the database adding some security to our database.
+
+### AutoForm
+
+Will Use our database schemas to create automatic insert and update forms
+to use in our templates, while providing some basic database security.
