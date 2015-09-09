@@ -3,6 +3,40 @@ Customers        = new Mongo.Collection('customers');
 CustomerProjects = new Mongo.Collection('projects');
 TimeTracker      = new Mongo.Collection('timeTracker');
 
+// Database Simple Schemas
+CustomersSchema = new SimpleSchema({
+  companyName: {
+    type: String,
+    label: "Company Name",
+    max: 200
+  },
+  firstname: {
+    type: String,
+    label: "FirstName",
+    max: 200
+  },
+  lastname: {
+    type: String,
+    label: "FirstName",
+    max: 200
+  },
+  email: {
+    type: String,
+    label: "Email",
+  },
+  phone: {
+    type: String,
+    max: 15,
+    label: "Phone Number"
+  },
+  website: {
+    type: String,
+    max: 100,
+    label: "Email"
+  }
+});
+
+
 // Base structure of the Databases will be something like this
 /*
 Customers
