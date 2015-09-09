@@ -1,12 +1,38 @@
-<head>
-  <title>test-meteor</title>
-</head>
+<template name="mainLayout">
+    <head>
+        <title>test-meteor</title>
+    </head>
+    <body>
+        <header>
+            <h1> App Title </h1>
+            <nav>
+                <ul>
+                    <li> <a href="/"> Home </a></li>
+                    <li> <a href="/customers"> Customers </a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="main">
+            {{> yield}}
+        </section>
+    </body>
+    <footer>
+        <div> Copyright 2015 - David Davis - Meteor Development </div>
+    </footer>
+</template>
 
-<body>
+<template name="home">
   <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
-</body>
+  <p> Testing the home page router </p>
+</template>
+
+<template name="customers">
+    <h2> Customers Page </h2>
+
+    <p> Testing the customer page </p>
+</template>
+
 
 <template name="hello">
     {{welcomeMessage}}
