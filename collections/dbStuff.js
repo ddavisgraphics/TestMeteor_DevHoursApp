@@ -3,8 +3,7 @@ Customers        = new Mongo.Collection('customers');
 CustomerProjects = new Mongo.Collection('projects');
 TimeTracker      = new Mongo.Collection('timeTracker');
 
-// Database Simple Schemas
-CustomersSchema = new SimpleSchema({
+Customers.attachSchema(new SimpleSchema({
   companyName: {
     type: String,
     label: "Company Name",
@@ -12,17 +11,18 @@ CustomersSchema = new SimpleSchema({
   },
   firstname: {
     type: String,
-    label: "FirstName",
+    label: "First Name",
     max: 200
   },
   lastname: {
     type: String,
-    label: "FirstName",
+    label: "Last Name",
     max: 200
   },
   email: {
     type: String,
     label: "Email",
+    regEx: SimpleSchema.RegEx.Email,
   },
   phone: {
     type: String,
@@ -32,9 +32,14 @@ CustomersSchema = new SimpleSchema({
   website: {
     type: String,
     max: 100,
-    label: "Email"
-  }
-});
+    label: "Website",
+    optional: true,
+  },
+  // address:{
+  //   type: Object,
+  //   maxCount:1
+  // }
+}));
 
 
 // Base structure of the Databases will be something like this
