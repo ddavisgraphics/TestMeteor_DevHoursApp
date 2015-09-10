@@ -1,13 +1,15 @@
+<head>
+  <title> Hours Application </title>
+</head>
+
 <template name="mainLayout">
-    <head>
-        <title>test-meteor</title>
-    </head>
-    <body>
         <header>
             <h1> App Title </h1>
             <nav>
                 <ul>
                     <li> <a href="/"> Home </a></li>
+                    <li> <a href="/customers"> Manage Customers </a></li>
+                    <li> <a href="/addCustomer"> Add Customers </a></li>
                     <li> <a href="/customers"> Customers </a></li>
                 </ul>
             </nav>
@@ -15,7 +17,6 @@
         <section class="main">
             {{> yield}}
         </section>
-    </body>
     <footer>
         <div> Copyright 2015 - David Davis - Meteor Development </div>
     </footer>
