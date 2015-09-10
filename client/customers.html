@@ -1,5 +1,13 @@
-<template name="customers">
+<template name="customerTemplate">
     <h2> Customers Page </h2>
 
-    <p> Testing the customer page </p>
+    {{#each allCustomers}}
+      <li>
+        <div class="company">{{company}}</div>
+        <div class="name">{{fullname}}</div>
+        <div class="phone">{{phone}} </div>
+        <div class="email">{{email}} </div>
+        <div class="website">{{website}}</div>
+      </li>
+    {{/each}}
 </template>
