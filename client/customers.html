@@ -7,12 +7,11 @@
 
     {{#each allCustomers}}
       <li>
-        <div class="company">{{company}}</div>
+        <div class="company"><a href="{{website}}">{{company}}</a></div>
         <div class="name">{{fullname}}</div>
         <div class="phone">{{phone}} </div>
-        <div class="email">{{email}} </div>
-        <div class="website">{{website}}</div>
-        <div class="crud"> <a href="#"> Edit </a> | <a href="#"> Delete </a> </div>
+        <div class="email"><a href="mailto:{{email}}"> {{email}} </a></div>
+        <div class="crud"> <a href="#" class="edit"> <i class="fa fa-pencil-square-o"></i> Edit </a> | <a href="#" class="delete">  <i class="fa fa-user-times"></i> Delete </a> </div>
       </li>
     {{/each}}
 </template>
