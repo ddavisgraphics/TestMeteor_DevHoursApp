@@ -31,10 +31,16 @@ Template.customerTemplate.events({
     }
 });
 
+// Get the logged customer id
 Template.editCustomer.helpers({
     customerID: function(){
         var id = Session.get('customerId');
-        console.log(id);
         return Customers.findOne(id);
+    },
+    feedback: function(){
+        var id = Session.get('customerId');
+        if(!id){
+            return "No Customer Id has been provided.  Please go back and try again.";
+        }
     }
 });
