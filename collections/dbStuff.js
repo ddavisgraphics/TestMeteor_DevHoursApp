@@ -34,13 +34,61 @@ Customers.attachSchema(new SimpleSchema({
     max: 100,
     label: "Website",
     optional: true,
+    regEx: SimpleSchema.RegEx.Url,
   },
-  // address:{
-  //   type: Object,
-  //   maxCount:1
-  // }
+  address:{
+    type: Object,
+    maxCount:1,
+    optional: false
+  },
+  'address.$.street': {
+      type: String,
+      label: "Street Address",
+      max: 200
+  },
+  'address.$.city' :{
+      type: String,
+      label: "City",
+      max: 200
+  },
+  'address.$.state': {
+      type: String,
+      label: "State",
+      max: 200
+  },
+  'address.$.postalcode': {
+      type: Number,
+      label: "Zip Code",
+      max: 6
+  }
 }));
 
+
+CustomerProjects.attachSchema(new SimpleSchema({
+  customerID: {
+    type: 'hidden',
+    label: "CustomerID"
+  },
+  projectName:{
+    type:String,
+    label:"Project Name",
+    max:50
+  },
+  scope:{
+    type:String,
+    label:"What is the project",
+    max:100
+  },
+  completed:{
+    type:'boolean-select',
+    label:"Is the project complete?"
+  },
+  description:{
+    type:String,
+    label:"What is the project",
+    max:400
+  }
+}));
 
 // Base structure of the Databases will be something like this
 /*
