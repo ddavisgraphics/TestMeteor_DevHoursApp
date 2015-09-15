@@ -30,3 +30,11 @@ Template.customerTemplate.events({
         Session.set("customerId", this._id);
     }
 });
+
+Template.editCustomer.helpers({
+    customerID: function(){
+        var id = Session.get('customerId');
+        console.log(id);
+        return Customers.findOne(id);
+    }
+});
