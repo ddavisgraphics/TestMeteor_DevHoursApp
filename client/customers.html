@@ -5,6 +5,11 @@
 <template name="customerTemplate">
     <h2> Customers Page </h2>
 
+    <div class="addCustomer">
+      <a href="/addCustomer"> <i class="fa fa-user-plus"></i> Add Customers </a>
+    </div>
+
+    <div class="customerList">
     {{#each allCustomers}}
       <li>
         <div class="company"><a href="{{website}}">{{company}}</a></div>
@@ -14,4 +19,5 @@
         <div class="crud"> <a href="/editCustomer" class="edit"> <i class="fa fa-pencil-square-o"></i> Edit </a> | <a href="#" class="delete">  <i class="fa fa-user-times"></i> Delete </a> </div>
       </li>
     {{/each}}
+    </div>
 </template>
