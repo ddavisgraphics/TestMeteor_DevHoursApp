@@ -1,5 +1,5 @@
+// List customers and bind data
 Template.customerTemplate.helpers({
-    // customers loop will loop through all customers
     allCustomers:function(){
         return Customers.find();
     },
@@ -17,5 +17,16 @@ Template.customerTemplate.helpers({
     },
     company:function(){
         return this.companyName;
+    }
+});
+
+// Customer CRUD
+Template.customerTemplate.events({
+    "click .delete": function(event){
+        event.preventDefault();
+        Customers.remove(this._id);
+    },
+    'click .edit': function () {
+        Session.set("customerId", this._id);
     }
 });
