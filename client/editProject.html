@@ -1,0 +1,17 @@
+<head>
+  <title> Edit Project | Hours Application </title>
+</head>
+
+<template name="editProject">
+    <h1> Edit Project </h1>
+
+    <div class="editProjectForm">
+    {{#autoForm collection="CustomerProjects" id="addProject" type="update"}}
+        {{> afFieldInput name='customerID' class="customerID" options=customerMenu}}
+        {{> afQuickField name='projectName'}}
+        {{> afQuickField name='scope'}}
+        {{> afQuickField name="completed" type="boolean-select" trueLabel="Yes" falseLabel="No"}}
+        {{> afQuickField name='description' rows=6}}
+    {{/autoForm}}
+    </div>
+</template>
