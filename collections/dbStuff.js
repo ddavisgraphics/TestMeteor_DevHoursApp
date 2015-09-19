@@ -38,28 +38,23 @@ Customers.attachSchema(new SimpleSchema({
   },
   address:{
     type: Object,
-    maxCount:1,
     optional: false
   },
-  'address.$.street': {
+  'address.street': {
       type: String,
       label: "Street Address",
-      max: 200
   },
-  'address.$.city' :{
+  'address.city' :{
       type: String,
       label: "City",
-      max: 200
   },
-  'address.$.state': {
+  'address.state': {
       type: String,
       label: "State",
-      max: 200
   },
-  'address.$.postalcode': {
+  'address.postalcode': {
       type: Number,
       label: "Zip Code",
-      max: 6
   }
 }));
 
@@ -80,7 +75,7 @@ CustomerProjects.attachSchema(new SimpleSchema({
     max:100
   },
   completed:{
-    type:'boolean-select',
+    type:Boolean,
     label:"Is the project complete?"
   },
   description:{

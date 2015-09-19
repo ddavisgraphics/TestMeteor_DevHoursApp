@@ -3,6 +3,15 @@
 </head>
 
 <template name="newProject">
-  <h1> Add New Project </h1>
-   {{> quickForm collection="CustomerProjects" id="addProject" type="insert"}}
+    <h1> Add New Project </h1>
+
+    <div class="addNewProject">
+    {{#autoForm collection="CustomerProjects" id="addProject" type="insert"}}
+        {{> afFieldInput name='customerID' class="customerID" options=customerMenu}}
+        {{> afQuickField name='projectName'}}
+        {{> afQuickField name='scope'}}
+        {{> afQuickField name="completed" type="boolean-select" trueLabel="Yes" falseLabel="No"}}
+        {{> afQuickField name='description' rows=6}}
+    {{/autoForm}}
+    </div>
 </template>
