@@ -61,7 +61,7 @@ Customers.attachSchema(new SimpleSchema({
 
 CustomerProjects.attachSchema(new SimpleSchema({
   customerID: {
-    type: 'hidden',
+    type: String,
     label: "CustomerID"
   },
   projectName:{
@@ -82,6 +82,36 @@ CustomerProjects.attachSchema(new SimpleSchema({
     type:String,
     label:"What is the project",
     max:400
+  }
+}));
+
+TimeTracker.attachSchema(new SimpleSchema({
+  projectID: {
+    type:String,
+    label: "Project Id"
+  },
+  startTime: {
+    type:String,
+    label: "Time Started",
+     max:200
+  },
+  endTime: {
+    type:String,
+    label: "Time Finished",
+    max:200
+  },
+  completed: {
+    type: Boolean,
+    label: "Is the project Completed?"
+  },
+  author: {
+    type: String,
+    label: "Your Name / Employee Name",
+    max:200,
+  },
+  description: {
+    type:String,
+    label: "Description of Work"
   }
 }));
 
