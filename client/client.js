@@ -122,6 +122,7 @@ Template.workOnProject.events({
         event.preventDefault();
         var date = new Date();
         var startTime = date.toLocaleTimeString();
+
         Session.set("startTime", startTime);
         $('.stopButton').attr('disabled', false).removeClass('disabled');
     },
