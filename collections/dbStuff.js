@@ -3,6 +3,41 @@ Customers        = new Mongo.Collection('customers');
 CustomerProjects = new Mongo.Collection('projects');
 TimeTracker      = new Mongo.Collection('timeTracker');
 
+// Base structure of the Databases will be something like this
+/*
+Customers
+------------------------------
+id - Unique Id for each customer
+company name
+firstname
+lastname
+email
+phone
+website
+
+Projects
+------------------------------
+projectId  - Unique for each
+customerId - to tag who the project belongs too
+projectName
+scope
+type
+completed
+description
+
+
+TimeTracker
+------------------------------
+timeId
+projectId
+startTime
+endTime
+totalHours
+workerName
+workDescription
+*/
+
+
 Customers.attachSchema(new SimpleSchema({
   companyName: {
     type: String,
@@ -115,38 +150,21 @@ TimeTracker.attachSchema(new SimpleSchema({
   }
 }));
 
-// Base structure of the Databases will be something like this
-/*
-Customers
-------------------------------
-id - Unique Id for each customer
-company name
-firstname
-lastname
-email
-phone
-website
-
-Projects
-------------------------------
-projectId  - Unique for each
-customerId - to tag who the project belongs too
-projectName
-scope
-type
-completed
-description
+// ======================================================================
+// SEO Stuff
+// ======================================================================
 
 
-TimeTracker
-------------------------------
-timeId
-projectId
-startTime
-endTime
-totalHours
-workerName
-workDescription
-*/
-
+SeoCollection.insert({
+    "route_name" : "home",
+    "title" : "Time Tracker | Home " ,
+    "meta" : [
+        // seo
+        {"keywords": "Time Tracker, Hours Tracking, Work Time Tracking, Project Management, time, hours, database, workflow"}
+        {"description": "Time tracking application built as test project for meteor as a means to teach intro to web app development."},
+        {"charset": "utf-8"},
+        // ownership and author
+        {"author":"David J. Davis"}
+    ]
+});
 
