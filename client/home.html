@@ -1,3 +1,36 @@
+<head>
+  <!-- Tell Google that this is a meteor app  MVC style-->
+  <meta name="fragment" content="!">
+  <!-- Font awesome link -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+
+<!-- ================================================================= -->
+<!--                         Main Layout                               -->
+<!-- ================================================================= -->
+
+<template name="mainLayout">
+        <header>
+            <h1> App Title </h1>
+            <nav>
+                <ul>
+                    <li> <a href="/"> <i class="fa fa-home"></i> Home </a></li>
+                    <li> <a href="/customers"> <i class="fa fa-users"></i> Manage Customers </a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="main">
+            {{> yield}}
+        </section>
+    <footer>
+        <div> Copyright 2015 - David Davis - Meteor Development </div>
+    </footer>
+</template>
+
+<!-- ================================================================= -->
+<!--                         Home Template                             -->
+<!-- ================================================================= -->
+
 <template name="home">
   <h1> Welcome!  </h1>
   <p> This application is for managing time, billing, and customers.
@@ -10,4 +43,165 @@
     <li> <a href="/addProject"> Create New Project </a></li>
     <li> <a href="/work"> Work on Project </a></li>
   </ul>
+</template>
+
+<!-- ================================================================= -->
+<!--                        No Routes Found                            -->
+<!-- ================================================================= -->
+
+<template name="NoRouteFound">
+  <h1>
+    Sorry, no route was found for "{{url}}" on the client or the server!
+  </h1>
+</template>
+
+<!-- ================================================================= -->
+<!--                         Projects                                  -->
+<!-- ================================================================= -->
+
+<template name="editProject">
+    <h1> Edit Project </h1>
+
+    <div class="editProjectForm">
+    {{#autoForm collection="CustomerProjects" id="addProject" type="update"}}
+        <div class="customerSelect">
+            <label> Customer </label>
+            {{> afFieldInput name='customerID' class="customerID" options=customerMenu}}
+        </div>
+        {{> afQuickField name='projectName'}}
+        {{> afQuickField name='scope'}}
+        {{> afQuickField name="completed" type="boolean-select" trueLabel="Yes" falseLabel="No"}}
+        {{> afQuickField name='description' rows=6}}
+    {{/autoForm}}
+    </div>
+</template>
+
+
+
+<template name="newProject">
+    <h1> Add New Project </h1>
+
+    <div class="addNewProject">
+    {{#autoForm collection="CustomerProjects" id="addProject" type="insert"}}
+        <div class="customerSelect">
+            <label> Customer </label>
+            {{> afFieldInput name='customerID' class="customerID" options=customerMenu}}
+        </div>
+        {{> afQuickField name='projectName'}}
+        {{> afQuickField name='scope'}}
+        {{> afQuickField name="completed" type="boolean-select" trueLabel="Yes" falseLabel="No"}}
+        {{> afQuickField name='description' rows=6}}
+        <button type="submit" class="btn btn-primary">Add Project</button>
+    {{/autoForm}}
+    </div>
+</template>
+
+
+<!-- ================================================================= -->
+<!--                         CUSTOMERS                                 -->
+<!-- ================================================================= -->
+
+<template name="customerTemplate">
+    <h2> Customers Page </h2>
+
+    <div class="addCustomer">
+      <a href="/addCustomer"> <i class="fa fa-user-plus"></i> Add Customers </a>
+    </div>
+
+    <div class="customerList">
+    {{#each allCustomers}}
+      <li>
+        <div class="company"><a href="{{website}}">{{company}}</a></div>
+        <div class="name">{{fullname}}</div>
+        <div class="phone">{{phone}} </div>
+        <div class="email"><a href="mailto:{{email}}"> {{email}} </a></div>
+        <div class="crud"> <a href="/editCustomer" class="edit"> <i class="fa fa-pencil-square-o"></i> Edit </a> | <a href="#" class="delete">  <i class="fa fa-user-times"></i> Delete </a> </div>
+      </li>
+    {{/each}}
+    </div>
+</template>
+
+
+
+<template name="editCustomer">
+  <h1>Edit Customer </h1>
+  <div class="feedback">{{feedback}}</div>
+   {{> quickForm collection="Customers" id="editCustomer" type="update" doc=customerID}}
+</template>
+
+
+
+<template name="addCustomer">
+  <h1>Add New Customer </h1>
+   {{> quickForm collection="Customers" id="addCustomer" type="insert"}}
+</template>
+
+
+<!-- ================================================================= -->
+<!--                        Time Tracking                              -->
+<!-- ================================================================= -->
+
+
+<template name="workOnProject">
+    <h1>Work on Project</h1>
+    <a href="#help" class="helpToggle"> <i class="fa fa-question-circle"></i> Help </a>
+
+    <div class="help" style="display:none">
+        <p>
+        This section will be used to keep track of time spent working on a customers project.
+        Get started
+            <ol>
+                <li> Select A Customer <p class="micro"> This will populate the projects menu with that customers projects.</p></li>
+                <li> Select A Project <p class="micro"> This adds allows you to start with the time tracking. </p></li>
+                <li> Start Session and Save Session will take a timestamp of the current time when clicked. </li>
+                <li> <strong> Important: </strong> Nothing is saved until you end time and finish the following form. </li>
+            </ol>
+        </p>
+    </div>
+
+    <div class="feedback">
+        {{feedback}}
+    </div>
+
+    <div class="selectCustomer">
+        <select class="customerMenu">
+            <option value=""> Select A Customer </option>
+            {{#each dropdownCustomer}}
+                <option value="{{id}}">
+                        {{fullname}}
+                </option>
+            {{/each}}
+        </select>
+    </div>
+
+    <div class="selectProject">
+        {{projectFeedback}}
+        <select class="projectMenu">
+            <option value=""> Select A Project </option>
+            {{#each selectProject}}
+                <option value="{{id}}">
+                        {{projectName}}
+                </option>
+            {{/each}}
+        </select>
+    </div>
+
+    <div class="timeTracker">
+        <a href="#start" class="startButton disabled"> Start Session </a>
+        <a href="#stop" class="stopButton disabled">  Save Session  </a>
+    </div>
+
+    <form class="projectWork" style="display:none">
+        <div class="projectDetails">
+            {{#autoForm collection="TimeTracker" id="timeTracker" type="insert"}}
+                {{> afQuickField name='projectID' class="projectID"}}
+                {{> afQuickField name='startTime' class="startTime"}}
+                {{> afQuickField name='endTime' class="endTime"}}
+                {{> afQuickField name="completed" type="boolean-select" trueLabel="Yes" falseLabel="No"}}
+                {{> afQuickField name='author' class="author"}}
+                {{> afQuickField name='description' rows=6}}
+                <button type="submit">Save Work</button>
+            {{/autoForm}}
+        </div>
+    </form>
 </template>
