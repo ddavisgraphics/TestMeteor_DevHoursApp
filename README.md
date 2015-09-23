@@ -57,6 +57,8 @@ that goes into the database adding some security to our database.
 
 See collections folder for DB styles.
 
+**NOTE** Mass inserting is not allowed in Meteor.  You must insert each object individually or write a loop, see SEO inserts.
+
 ### AutoForm
 
 Will Use our database schemas to create automatic insert and update forms
@@ -67,3 +69,8 @@ to use in our templates, while providing some basic database security.
 This is not a secure application.  Many of the items that could have been rendered on
 the server side have been developed on the client side.  This is just a demonstration
 and will need ammended for production use.
+
+## To Do:
+
+ - Do some base styling of the application.
+ - Projects need a place to be listed along with the possibility to edit the project or delete the project.
