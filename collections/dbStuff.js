@@ -154,17 +154,79 @@ TimeTracker.attachSchema(new SimpleSchema({
 // SEO Stuff
 // ======================================================================
 
-
 SeoCollection.insert({
     "route_name" : "home",
     "title" : "Time Tracker | Home " ,
     "meta" : [
         // seo
-        {"keywords": "Time Tracker, Hours Tracking, Work Time Tracking, Project Management, time, hours, database, workflow"}
+        {"keywords": "Time Tracker, Hours Tracking, Work Time Tracking, Project Management, time, hours, database, workflow"},
         {"description": "Time tracking application built as test project for meteor as a means to teach intro to web app development."},
-        {"charset": "utf-8"},
+        // ownership and author
+        {"author":"David J. Davis"}
+    ]
+  });
+
+
+SeoCollection.insert({
+    "route_name" : "customers",
+    "title" : "Customers | Time Tracker" ,
+    "meta" : [
+        // seo
+        {"keywords": "Time Tracker customers, time, tracking, customer, customer application, service, public"},
+        {"description": "Customer listing for the time tracker application."},
         // ownership and author
         {"author":"David J. Davis"}
     ]
 });
 
+
+SeoCollection.insert({
+    "route_name" : "addCustomers",
+    "title" : "Add Customers | Time Tracker" ,
+    "meta" : [
+        // seo
+        {"keywords": "Time Tracker customers, time, tracking, customer, customer application, service, public"},
+        {"description": "Customer listing for the time tracker application."},
+        // ownership and author
+        {"author":"David J. Davis"}
+    ]
+});
+
+
+SeoCollection.insert({
+  "route_name" : "editCustomers",
+  "title" : "Edit Customers | Time Tracker" ,
+  "meta" : [
+      // seo
+      {"keywords": "Time Tracker customers, time, tracking, customer, customer application, service, public"},
+      {"description": "Customer listing for the time tracker application."},
+      // ownership and author
+      {"author":"David J. Davis"}
+  ]
+});
+
+
+SeoCollection.insert({
+  "route_name" : "addProject",
+  "title" : "Create New Project | Time Tracker" ,
+  "meta" : [
+      // seo
+      {"keywords": "Time Tracker, projects, creation, customer editing, production, task manager"},
+      {"description": "Projects page allows users to add projects to exsisting customers."},
+      // ownership and author
+      {"author":"David J. Davis"}
+  ]
+});
+
+
+SeoCollection.insert({
+  "route_name" : "work",
+  "title" : "Tracking Work | Time Tracker" ,
+  "meta" : [
+      // seo
+      {"keywords": "Time Tracker, work, progression, timeclock, employee page, customer time tracker, project manager"},
+      {"description": "Is the page that employees spend the most of their time on working on clients projects."},
+      // ownership and author
+      {"author":"David J. Davis"}
+  ]
+});
