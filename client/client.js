@@ -27,7 +27,6 @@ Template.customerTemplate.events({
         Customers.remove(this._id);
     },
     'click .edit': function () {
-        event.preventDefault();
         Session.set("customerId", this._id);
     }
 });
