@@ -24,9 +24,11 @@ is compiled for both client and server rendering.
 In a sepaerate JS file you have to create a route.  This is under a shared js file,
 in most documentation the folder shared js is kept in is called libs or lib.
 
+``` JavaScript
     Router.route('/', function(){
         this.render('home');
     });
+```
 
 ### SEO
 
@@ -34,14 +36,14 @@ SEO goes hand in hand with iron router.  Using another package we have created a
 implement better SEO into our application and ammend header information for each route.
 It auto magically grabs code from the database that is an under an SeoCollection.
 
-### Renaming Routes is Required For SEO
-
 In order for this to work correctly we must rename our routes.  A correctly name route will
 use the following syntax.
 
+``` JavaScript
     Router.route('/', function() {
         this.render('home');
     }, {name: 'home'});
+```
 
 Which deviates from the original only by a little bit, see above.
 
