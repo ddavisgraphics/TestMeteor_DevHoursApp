@@ -61,11 +61,30 @@
 <!--                         Projects                                  -->
 <!-- ================================================================= -->
 
+<template name="projectList">
+    <h2> View All Projects </h2>
+
+    <div class="addCustomer">
+      <a href="/newProject"> <i class="fa fa-user-plus"></i> Add Projects </a>
+    </div>
+
+    <div class="projectList">
+    {{#each allProjects}}
+      <li>
+        <div class="name">{{name}}</div>
+        <div class="project">{{projectScope}} </div>
+        <div class="completed"> {{completed}} </div>
+        <div class="crud"> <a href="/editProject" class="edit"> <i class="fa fa-pencil-square-o"></i> Edit </a> | <a href="#" class="delete">  <i class="fa fa-user-times"></i> Delete </a> </div>
+      </li>
+    {{/each}}
+    </div>
+</template>
+
 <template name="editProject">
     <h1> Edit Project </h1>
 
     <div class="editProjectForm">
-    {{#autoForm collection="CustomerProjects" id="addProject" type="update"}}
+    {{#autoForm collection="CustomerProjects" id="addProject" type="update" doc=projectID}}
         <div class="customerSelect">
             <label> Customer </label>
             {{> afFieldInput name='customerID' class="customerID" options=customerMenu}}
@@ -74,6 +93,7 @@
         {{> afQuickField name='scope'}}
         {{> afQuickField name="completed" type="boolean-select" trueLabel="Yes" falseLabel="No"}}
         {{> afQuickField name='description' rows=6}}
+        <button type="submit" class="btn btn-primary">Save Edits</button>
     {{/autoForm}}
     </div>
 </template>
@@ -121,15 +141,11 @@
     </div>
 </template>
 
-
-
 <template name="editCustomer">
   <h1>Edit Customer </h1>
   <div class="feedback">{{feedback}}</div>
    {{> quickForm collection="Customers" id="editCustomer" type="update" doc=customerID}}
 </template>
-
-
 
 <template name="addCustomer">
   <h1>Add New Customer </h1>

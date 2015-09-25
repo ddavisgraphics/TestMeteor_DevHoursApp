@@ -45,6 +45,50 @@ Template.editCustomer.helpers({
     }
 });
 
+// Projects
+Template.projectList.helpers({
+    allProjects:function(){
+       return CustomerProjects.find();
+    },
+    name:function(){
+        return this.projectName;
+    },
+    projectScope:function(){
+        return this.scope;
+    },
+    completed:function(){
+        return (this.completed ? "Yes" : "No");
+    },
+    description:function(){
+        return this.description;
+    }
+});
+
+// Project CRUD
+Template.projectList.events({
+    "click .delete": function(event){
+        event.preventDefault();
+        CustomerProjects.remove(this._id);
+    },
+    'click .edit': function () {
+        Session.set("currentProject", this._id);
+    }
+});
+
+// Edit Project
+Template.editProject.helpers({
+    projectID: function(){
+        var id = Session.get('currentProject');
+        return CustomerProjects.findOne(id);
+    },
+    feedback: function(){
+        var id = Session.get('currentProject');
+        if(!id){
+            return "No project has been selected.  Please go back and select one.";
+        }
+    }
+});
+
 
 // Logic is to help build a customer menu for
 // our new project.  This will allow us to grab
