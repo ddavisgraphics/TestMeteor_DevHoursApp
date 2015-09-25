@@ -11,11 +11,18 @@
 
 <template name="mainLayout">
         <header>
-            <h1> App Title </h1>
+            <div class="siteTitle">
+                <h1> Time Tracker </h1>
+                <blockquote>
+                    <p> A production application written in Meteor JS! </p>
+                </blockquote>
+            </div>
             <nav>
                 <ul>
                     <li> <a href="/"> <i class="fa fa-home"></i> Home </a></li>
                     <li> <a href="/customers"> <i class="fa fa-users"></i> Manage Customers </a></li>
+                    <li> <a href="/projectList"> <i class="fa fa-users"></i> Manage Projects  </a></li>
+                    <li> <a href="/work"> <i class="fa fa-users"></i> Work on a Project </a></li>
                 </ul>
             </nav>
         </header>
@@ -38,13 +45,6 @@
     Feel free to modify and amend as needed.
   </p>
 
-  <h2> What would you like to do? </h2>
-
-  <ul class="actions">
-    <li> <a href="/addCustomer"> Create New Customer </a></li>
-    <li> <a href="/addProject"> Create New Project </a></li>
-    <li> <a href="/work"> Work on Project </a></li>
-  </ul>
 </template>
 
 <!-- ================================================================= -->
